@@ -1,15 +1,25 @@
-<html>
-
-<head>
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
         .bonne-reponse {
             color: rgb(31, 156, 0);
         }
+
         .mauvaise-reponse {
             color: red;
         }
-
         .boutton-clavier {
             width: 50px;
             height: 50px;
@@ -19,24 +29,38 @@
 </head>
 
 <body>
-    <div id="jeu">
-        <h2>Question</h2>
-        <div id="question"></div>
-        <h2>Réponse</h2>
-        <input type="text" id="reponse" disabled />
+    <div id="jeu" class="container container-fluid">
+        <h2>Multiplications</h2>
+        <div class="row">
+            <div id="question" class="col-12 text-center font-weight-bold">
+
+            </div>
+            <div class="col-12">
+                <form>
+                    <div class="form-group">
+                        <input id="reponse" type="text" class="form-control" placeholder="Réponse" disabled />
+                    </div>
+                </form>
+            </div>
+        </div>
         <div id="clavier"></div>
         <h2>Résultats</h2>
         <div id="resultats"></div>
     </div>
 
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="js/Clavier.js"></script>
     <script type="text/javascript">
 
         var clavier = new Clavier(document.getElementById('clavier'));
-        clavier.on('validated', function(e){
+        clavier.on('validated', function (e) {
             verifieLaReponse(e.value);
         });
-        clavier.on('change', function(e){
+        clavier.on('change', function (e) {
             document.getElementById('reponse').value = e.value;
         });
 
@@ -53,20 +77,20 @@
         /**
          * Fonction principale
          */
-        function poseLaQuestion(){
+        function poseLaQuestion() {
             nombre1 = nombreAleatoire();
             nombre2 = nombreAleatoire();
-            document.getElementById('question').innerHTML = nombre1+' x '+nombre2+' = ?';
+            document.getElementById('question').innerHTML = nombre1 + ' x ' + nombre2 + ' = ?';
         }
 
-        function verifieLaReponse(valeurReponse){
+        function verifieLaReponse(valeurReponse) {
             let reponseAttendue = nombre1 * nombre2;
 
             let resultat = document.createElement('div');
-            if ( valeurReponse == reponseAttendue ){
+            if (valeurReponse == reponseAttendue) {
                 resultat.className = 'bonne-reponse';
                 resultat.innerHTML = `${nombre1} x ${nombre2} = ${valeurReponse}`;
-            }else{
+            } else {
                 resultat.className = 'mauvaise-reponse';
                 resultat.innerHTML = `${nombre1} x ${nombre2} != ${valeurReponse}`;
             }

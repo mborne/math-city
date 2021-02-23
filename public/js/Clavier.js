@@ -3,7 +3,7 @@ class Clavier {
 
     constructor(parentElement){
         let grid = document.createElement('div');
-        grid.className = 'clavier';
+        grid.classList.add('clavier','row');
 
         grid.appendChild(this.createButton('C'));
         grid.appendChild(this.createButton(''));
@@ -36,12 +36,18 @@ class Clavier {
     }
 
     createButton(value){
+        let box = document.createElement('div');
+        box.classList.add('boutton-clavier','col-4');
+        if ( value == '' ){
+            return box;
+        }
         let button = document.createElement('input');
         button.type = 'button';
         button.value = value;
-        button.className = 'boutton-clavier';
+        button.classList.add('btn','btn-block');
         button.addEventListener('click',this._onClick.bind(this));
-        return button;
+        box.appendChild(button);
+        return box;
     }
 
     on(name,listener){
@@ -61,9 +67,11 @@ class Clavier {
     _onClick(e){
         let value = e.target.value;
         if ( value == 'V' ){
-            this.trigger('validated');
-            this.value = '';
-            this.trigger('change');
+            if ( this.value != ''){
+                this.trigger('validated');
+                this.value = '';
+                this.trigger('change');
+            }
         }else if ( value == '' ){
 
         }else if ( value == 'C' ){
