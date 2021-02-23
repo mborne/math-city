@@ -44,6 +44,16 @@
             </div>
         </div>
         <div id="clavier"></div>
+
+        <div class="row">
+            <div class="col-6 text-center font-weight-bold">
+                Score : <span id="score">0/0</span>
+            </div>
+            <div class="col-6 text-right">
+                Chrono : <span id="chrono">0/0</span>
+            </div>
+        </div>
+
         <h2>Résultats</h2>
         <div id="resultats"></div>
     </div>
@@ -54,7 +64,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="js/Clavier.js"></script>
+    <script type="text/javascript" src="js/Chrono.js"></script>
     <script type="text/javascript">
+
+        var chrono = new Chrono(document.getElementById('chrono'));
 
         var clavier = new Clavier(document.getElementById('clavier'));
         clavier.on('validated', function (e) {
@@ -71,6 +84,9 @@
             return Math.floor(Math.random() * (11));
         }
 
+
+        var nombreQuestions = 0;
+        var nombreBonneReponses = 0;
         var nombre1 = null;
         var nombre2 = null;
 
@@ -78,6 +94,7 @@
          * Fonction principale
          */
         function poseLaQuestion() {
+            nombreQuestions++;
             nombre1 = nombreAleatoire();
             nombre2 = nombreAleatoire();
             document.getElementById('question').innerHTML = nombre1 + ' x ' + nombre2 + ' = ?';
@@ -88,6 +105,7 @@
 
             let resultat = document.createElement('div');
             if (valeurReponse == reponseAttendue) {
+                nombreBonneReponses++;
                 resultat.className = 'bonne-reponse';
                 resultat.innerHTML = `${nombre1} x ${nombre2} = ${valeurReponse}`;
             } else {
@@ -95,7 +113,7 @@
                 resultat.innerHTML = `${nombre1} x ${nombre2} != ${valeurReponse}`;
             }
             document.getElementById('resultats').prepend(resultat);
-
+            document.getElementById('score').innerHTML = `${nombreBonneReponses}/${nombreQuestions}`;
             poseLaQuestion();
         }
 
