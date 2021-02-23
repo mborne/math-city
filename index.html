@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        .bonne-reponse {
+            color: rgb(31, 156, 0);
+        }
+        .mauvaise-reponse {
+            color: red;
+        }
+
+        .boutton-clavier {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="jeu">
+        <h2>Question</h2>
+        <div id="question"></div>
+        <h2>Réponse</h2>
+        <input type="text" id="reponse" disabled />
+        <div id="clavier"></div>
+        <h2>Résultats</h2>
+        <div id="resultats"></div>
+    </div>
+
+    <script type="text/javascript" src="js/Clavier.js"></script>
+    <script type="text/javascript">
+
+        var clavier = new Clavier(document.getElementById('clavier'));
+        clavier.on('validated', function(e){
+            verifieLaReponse(e.value);
+        });
+        clavier.on('change', function(e){
+            document.getElementById('reponse').value = e.value;
+        });
+
+        /**
+         * Renvoie un nombre entre 0 et 9
+         */
+        function nombreAleatoire() {
+            return Math.floor(Math.random() * (11));
+        }
+
+        var nombre1 = null;
+        var nombre2 = null;
+
+        /**
+         * Fonction principale
+         */
+        function poseLaQuestion(){
+            nombre1 = nombreAleatoire();
+            nombre2 = nombreAleatoire();
+            document.getElementById('question').innerHTML = nombre1+' x '+nombre2+' = ?';
+        }
+
+        function verifieLaReponse(valeurReponse){
+            let reponseAttendue = nombre1 * nombre2;
+
+            let resultat = document.createElement('div');
+            if ( valeurReponse == reponseAttendue ){
+                resultat.className = 'bonne-reponse';
+                resultat.innerHTML = `${nombre1} x ${nombre2} = ${valeurReponse}`;
+            }else{
+                resultat.className = 'mauvaise-reponse';
+                resultat.innerHTML = `${nombre1} x ${nombre2} != ${valeurReponse}`;
+            }
+            document.getElementById('resultats').prepend(resultat);
+
+            poseLaQuestion();
+        }
+
+        //document.getElementById('valider').addEventListener('click',verifieLaReponse);
+
+        poseLaQuestion();
+    </script>
+</body>
+
+</html>
