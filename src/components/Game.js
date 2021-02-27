@@ -2,12 +2,7 @@ import React from 'react';
 
 import Keyboard from './Keyboard';
 import Answers from './Answers';
-
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
+import getRandomInt from '../helpers/getRandomInt';
 
 class Game extends React.Component {
     constructor(props) {
