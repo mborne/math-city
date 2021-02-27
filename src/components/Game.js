@@ -4,6 +4,31 @@ import Keyboard from './Keyboard';
 import Answers from './Answers';
 import getRandomInt from '../helpers/getRandomInt';
 
+const modes = {
+    /**
+     * Création d'une question sur les additions
+     */
+    addition: function(){
+        let number1 = getRandomInt(1,10);
+        let number2 = getRandomInt(1,10);
+        return {
+            text: `${number1} + ${number2} = ?`,
+            expected: number1 + number2
+        }
+    },
+    /**
+     * Création d'une question sur les multiplications
+     */
+    multiplication: function(){
+        let number1 = getRandomInt(1,10);
+        let number2 = getRandomInt(1,10);
+        return {
+            text: `${number1} x ${number2} = ?`,
+            expected: number1 * number2
+        }
+    }
+};
+
 class Game extends React.Component {
     constructor(props) {
         super(props);
@@ -35,9 +60,11 @@ class Game extends React.Component {
     }
 
     render() {
+        const mode = this.props.mode;
+        const title = mode.charAt(0).toUpperCase() + mode.slice(1);
         return (
             <div className="game container container-fluid">
-                <h1>Multiplication</h1>
+                <h1>{title}</h1>
                 <div className="question">{this.state.question.text}</div>
                 <Keyboard onSubmit={this.handleSubmit.bind(this)} />
                 <div className="row">
@@ -79,16 +106,12 @@ class Game extends React.Component {
     }
 
     /**
-     * Création d'une nouvelles questions
+     * Création d'une nouvelle question en fonction du mode
      */
     createQuestion(){
-        let number1 = getRandomInt(1,10);
-        let number2 = getRandomInt(1,10);
-        return {
-            text: `${number1} x ${number2} = ?`,
-            expected: number1 * number2
-        }
+        return modes[this.props.mode]();
     }
+
 }
 
 export default Game;

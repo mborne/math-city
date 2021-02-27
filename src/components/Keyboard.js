@@ -2,6 +2,9 @@ import React from 'react';
 
 import KeyboardButton from './KeyboardButton';
 
+/**
+ * Clavier virtuel pour la saisie des réponses.
+ */
 class Keyboard extends React.Component {
     constructor(props) {
         super(props);
@@ -10,26 +13,38 @@ class Keyboard extends React.Component {
         };
     }
 
+    /**
+     * Ajout d'un caractère.
+     *
+     * @param {string} key
+     */
     handleKey(key){
         this.setState({
             value: this.state.value+key
         });
     }
 
+    /**
+     * Suppression du dernier caractère.
+     */
     handleRemoveOne(){
         this.setState({
             value: this.state.value.slice(0, -1)
         });
     }
 
+    /**
+     * Réinitialisation de la réponse.
+     */
     handleClear(){
         this.setState({
             value: ''
         });
     }
 
-
-
+    /**
+     * Validation de la réponse.
+     */
     handleSubmit(){
         let value = this.state.value;
         if ( value == '' ){
@@ -41,6 +56,9 @@ class Keyboard extends React.Component {
         })
     }
 
+    /**
+     * Rendu du clavier et de la réponse.
+     */
     render() {
         return (
             <div className="keyboard">

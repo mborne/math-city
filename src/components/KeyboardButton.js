@@ -5,8 +5,8 @@ class KeyboardButton extends React.Component {
         super(props);
     }
 
-    handleClick(){
-       this.props.onClick(this.props.value);
+    handleClick() {
+        this.props.onClick(this.props.value);
     }
 
     render() {
