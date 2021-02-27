@@ -2,6 +2,7 @@ import React from 'react';
 
 import Keyboard from './Keyboard';
 import Answers from './Answers';
+import Result from './Result';
 import getRandomInt from '../helpers/getRandomInt';
 
 const modes = {
@@ -72,18 +73,26 @@ class Game extends React.Component {
     render() {
         const mode = this.props.mode;
         const title = mode.charAt(0).toUpperCase() + mode.slice(1);
-        return (
-            <div className="game container container-fluid">
-                <h1>{title}</h1>
-                <div className="question">{this.state.question.text}</div>
-                <Keyboard onSubmit={this.handleSubmit.bind(this)} />
-                <div className="row">
-                    <div className="col-6 score">Score : {this.getCorrectAnswersCount()} / {this.getAnswersCount()}</div>
-                    <div className="col-6 chrono">Chrono</div>
+
+        const complete = this.getAnswersCount() == 20;
+        if ( complete ){
+            return (
+                <Result answers={this.state.answers} />
+            )
+        }else{
+            return (
+                <div className="game container container-fluid">
+                    <h1>{title}</h1>
+                    <div className="question">{this.state.question.text}</div>
+                    <Keyboard onSubmit={this.handleSubmit.bind(this)} />
+                    <div className="row">
+                        <div className="col-6 score">Score : {this.getCorrectAnswersCount()} / {this.getAnswersCount()}</div>
+                        <div className="col-6 chrono">Chrono</div>
+                    </div>
+                    <Answers answers={this.state.answers} />
                 </div>
-                <Answers answers={this.state.answers} />
-            </div>
-        )
+            )
+        }
     }
 
     /**
