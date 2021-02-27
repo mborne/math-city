@@ -3,6 +3,9 @@ import React from 'react';
 import Keyboard from './Keyboard';
 import Answers from './Answers';
 import Result from './Result';
+import Chrono from './Chrono';
+
+
 import getRandomInt from '../helpers/getRandomInt';
 
 const modes = {
@@ -49,6 +52,10 @@ class Game extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.startDate = new Date();
+    }
+
     handleSubmit(value){
         if ( value == '' ){
             return;
@@ -87,7 +94,9 @@ class Game extends React.Component {
                     <Keyboard onSubmit={this.handleSubmit.bind(this)} />
                     <div className="row">
                         <div className="col-6 score">Score : {this.getCorrectAnswersCount()} / {this.getAnswersCount()}</div>
-                        <div className="col-6 chrono">Chrono</div>
+                        <div className="col-6 chrono">
+                            <Chrono />
+                        </div>
                     </div>
                     <Answers answers={this.state.answers} />
                 </div>
