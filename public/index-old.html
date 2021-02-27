@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .bonne-reponse {
+            color: rgb(31, 156, 0);
+        }
+
+        .mauvaise-reponse {
+            color: red;
+        }
+        .boutton-clavier {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+
+    </div>
+
+    <div id="jeu" class="container container-fluid">
+        <h2>Multiplications</h2>
+        <div class="row">
+            <div id="question" class="col-12 text-center font-weight-bold">
+
+            </div>
+            <div class="col-12">
+                <form>
+                    <div class="form-group">
+                        <input id="reponse" type="text" class="form-control" placeholder="Réponse" disabled />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="clavier"></div>
+
+        <div class="row">
+            <div class="col-6 text-center font-weight-bold">
+                Score : <span id="score">0/0</span>
+            </div>
+            <div class="col-6 text-right">
+                Chrono : <span id="chrono">0/0</span>
+            </div>
+        </div>
+
+        <h2>Résultats</h2>
+        <div id="resultats"></div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/Clavier.js"></script>
+    <script type="text/javascript" src="js/Chrono.js"></script>
+    <script type="text/javascript">
+
+        var chrono = new Chrono(document.getElementById('chrono'));
+
+        var clavier = new Clavier(document.getElementById('clavier'));
+        clavier.on('validated', function (e) {
+            verifieLaReponse(e.value);
+        });
+        clavier.on('change', function (e) {
+            document.getElementById('reponse').value = e.value;
+        });
+
+        /**
+         * Renvoie un nombre entre 0 et 9
+         */
+        function nombreAleatoire() {
+            return Math.floor(Math.random() * (11));
+        }
+
+
+        var nombreQuestions = 0;
+        var nombreBonneReponses = 0;
+        var nombre1 = null;
+        var nombre2 = null;
+
+
+        /**
+         * Fonction principale
+         */
+        function poseLaQuestion() {
+            nombreQuestions++;
+            nombre1 = nombreAleatoire();
+            nombre2 = nombreAleatoire();
+            document.getElementById('question').innerHTML = nombre1 + ' x ' + nombre2 + ' = ?';
+        }
+
+        function verifieLaReponse(valeurReponse) {
+            let reponseAttendue = nombre1 * nombre2;
+
+            let resultat = document.createElement('div');
+            if (valeurReponse == reponseAttendue) {
+                nombreBonneReponses++;
+                resultat.className = 'bonne-reponse';
+                resultat.innerHTML = `${nombre1} x ${nombre2} = ${valeurReponse}`;
+            } else {
+                resultat.className = 'mauvaise-reponse';
+                resultat.innerHTML = `${nombre1} x ${nombre2} != ${valeurReponse}`;
+            }
+            document.getElementById('resultats').prepend(resultat);
+            document.getElementById('score').innerHTML = `${nombreBonneReponses}/${nombreQuestions}`;
+            poseLaQuestion();
+        }
+
+        poseLaQuestion();
+    </script>
+</body>
+
+</html>

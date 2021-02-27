@@ -1,9 +1,12 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
-import Game from './components/Game';
+import Main from './components/Main';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 ReactDOM.render(
-    <Game />,
+    <BrowserRouter>
+        <Main />
+    </BrowserRouter>,
     document.getElementById('main')
 );
