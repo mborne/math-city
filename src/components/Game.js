@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Keyboard from './Keyboard';
+import Answers from './Answers';
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -44,7 +45,11 @@ class Game extends React.Component {
                 <h1>Multiplication</h1>
                 <div className="question">{this.state.question.text}</div>
                 <Keyboard onSubmit={this.handleSubmit.bind(this)} />
-                <div className="score">Score : {this.getCorrectAnswersCount()} / {this.getAnswersCount()}</div>
+                <div className="row">
+                    <div className="col-6 score">Score : {this.getCorrectAnswersCount()} / {this.getAnswersCount()}</div>
+                    <div className="col-6 chrono">Chrono</div>
+                </div>
+                <Answers answers={this.state.answers} />
             </div>
         )
     }
@@ -65,6 +70,17 @@ class Game extends React.Component {
             result += answer.correct ? 1 : 0;
         }
         return result;
+    }
+
+    /**
+     * Renvoie la dernière réponse
+     */
+    getLastAnswer(){
+        if ( this.answers.length == 0 ){
+            return null;
+        }else{
+            this.answers[0];
+        }
     }
 
     /**

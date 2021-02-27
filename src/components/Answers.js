@@ -1,0 +1,31 @@
+import React from 'react';
+
+
+class Answers extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const answers = this.props.answers.reverse().slice(0,2);
+
+        const items = [];
+
+        for (const [index, answer] of answers.entries()) {
+            if (answer.correct) {
+                items.push(<div className="answer answer-valid" key={index}>{answer.message}</div>);
+            } else {
+                items.push(<div className="answer answer-invalid" key={index}>{answer.message}</div>);
+            }
+        }
+
+        return (
+            <div className="answers">
+                {items}
+            </div>
+        )
+    }
+
+}
+
+export default Answers;
