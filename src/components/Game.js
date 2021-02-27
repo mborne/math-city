@@ -48,12 +48,9 @@ class Game extends React.Component {
         super(props);
         this.state = {
             question: this.createQuestion(),
-            answers: []
+            answers: [],
+            startDate: new Date()
         }
-    }
-
-    componentDidMount() {
-        this.startDate = new Date();
     }
 
     handleSubmit(value){
@@ -73,7 +70,8 @@ class Game extends React.Component {
         });
         this.setState({
             question: this.createQuestion(),
-            answers: newAnswers
+            answers: newAnswers,
+            startDate: this.state.startDate
         });
     }
 
@@ -81,10 +79,11 @@ class Game extends React.Component {
         const mode = this.props.mode;
         const title = mode.charAt(0).toUpperCase() + mode.slice(1);
 
-        const complete = this.getAnswersCount() == 20;
+        const complete = this.getAnswersCount() == 2;
         if ( complete ){
+            const endDate = new Date();
             return (
-                <Result answers={this.state.answers} />
+                <Result mode={this.props.mode} startDate={this.state.startDate} endDate={endDate} answers={this.state.answers} />
             )
         }else{
             return (

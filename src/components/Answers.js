@@ -7,7 +7,9 @@ class Answers extends React.Component {
     }
 
     render() {
-        const answers = this.props.answers.reverse().slice(0,2);
+        let answers = this.props.answers;
+        // TODO options
+        answers = answers.reverse().slice(0,2);
 
         const items = [];
 
