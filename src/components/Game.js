@@ -26,6 +26,16 @@ const modes = {
             text: `${number1} x ${number2} = ?`,
             expected: number1 * number2
         }
+    },
+    /**
+     * Création d'une question sur les double
+     */
+    double: function(){
+        let number = getRandomInt(1,50);
+        return {
+            text: `2 x ${number} = ?`,
+            expected: 2 * number
+        }
     }
 };
 

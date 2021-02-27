@@ -20,6 +20,9 @@ class Home extends React.Component {
                     <li className="list-group-item">
                         <Link to="/multiplication">Multiplication</Link>
                     </li>
+                    <li className="list-group-item">
+                        <Link to="/double">Double</Link>
+                    </li>
                 </ul>
             </div>
         )

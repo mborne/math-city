@@ -26,6 +26,9 @@ class Main extends React.Component {
           <Route exact path="/multiplication">
             <Game mode="multiplication" />
           </Route>
+          <Route exact path="/double">
+            <Game mode="double" />
+          </Route>
         </Switch>
       </Router>
     );
