@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": "webpack --mode=production",
+    "build-dev": "webpack --mode=development",
+    "watch": "webpack --mode=development --watch"
+  },
   "repository": {
     "type": "git",
     "url": "https://gogs.quadtreeworld.net/experiments/math-kombat.git"

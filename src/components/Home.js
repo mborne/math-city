@@ -5,24 +5,28 @@ import {
     Link
 } from 'react-router-dom';
 
+import modes from '../modes';
+import getModeTitle from '../helpers/getModeTitle';
+
 /**
  * Page d'accueil de l'application.
  */
 class Home extends React.Component {
     render() {
+        let modeItems = [];
+        Object.keys(modes).map(function(modeName,index){
+            let modeTitle = getModeTitle(modeName);
+            let modeLink = `/play/${modeName}`;
+            let modeItem = (<li key={index} className="list-group-item">
+                <Link to={modeLink}>{modeTitle}</Link>
+            </li>);
+            modeItems.push(modeItem);
+        });
         return (
             <div>
-                <h1>Math Kombat!</h1>
+                <h1>MathCity</h1>
                 <ul className="list-group">
-                    <li className="list-group-item">
-                        <Link to="/addition">Addition</Link>
-                    </li>
-                    <li className="list-group-item">
-                        <Link to="/multiplication">Multiplication</Link>
-                    </li>
-                    <li className="list-group-item">
-                        <Link to="/double">Double</Link>
-                    </li>
+                    {modeItems}
                 </ul>
             </div>
         )

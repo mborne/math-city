@@ -1,6 +1,8 @@
 import React from 'react';
 
-
+/**
+ * Display answers.
+ */
 class Answers extends React.Component {
     constructor(props) {
         super(props);

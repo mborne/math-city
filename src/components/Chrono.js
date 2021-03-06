@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * Display ellapsed time in seconds.
+ */
 class Chrono extends React.Component {
     constructor(props) {
         super(props);

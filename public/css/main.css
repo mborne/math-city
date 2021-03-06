@@ -1,0 +1,36 @@
+html,body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    width: 100%;
+}
+
+.question {
+    text-align: center;
+    font-weight: bold;
+}
+.keyboard-button {
+    text-align: center;
+    min-height: 50px;
+    border: 1px solid black;
+    padding-top: 10px;
+}
+
+.score {
+    text-align: left;
+    font-weight: bold;
+}
+.chrono {
+    text-align: right;
+    font-weight: bold;
+}
+
+.answer-valid {
+    color: green;
+}
+.answer-invalid {
+    color: red;
+}

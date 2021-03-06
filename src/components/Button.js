@@ -1,6 +1,9 @@
 import React from 'react';
 
-class KeyboardButton extends React.Component {
+/**
+ * Virtual keyboard button
+ */
+class Button extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -19,4 +22,4 @@ class KeyboardButton extends React.Component {
 
 }
 
-export default KeyboardButton;
+export default Button;

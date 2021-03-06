@@ -1,48 +1,18 @@
 import React from 'react';
 
-import Keyboard from './Keyboard';
+import Numpad from './Numpad';
 import Answers from './Answers';
 import Result from './Result';
 import Chrono from './Chrono';
 
+import modes from '../modes';
+import getModeTitle from '../helpers/getModeTitle';
 
-import getRandomInt from '../helpers/getRandomInt';
+const NUMBER_OF_QUESTIONS = 20;
 
-const modes = {
-    /**
-     * Création d'une question sur les additions
-     */
-    addition: function(){
-        let number1 = getRandomInt(1,10);
-        let number2 = getRandomInt(1,10);
-        return {
-            text: `${number1} + ${number2} = ?`,
-            expected: number1 + number2
-        }
-    },
-    /**
-     * Création d'une question sur les multiplications
-     */
-    multiplication: function(){
-        let number1 = getRandomInt(1,10);
-        let number2 = getRandomInt(1,10);
-        return {
-            text: `${number1} x ${number2} = ?`,
-            expected: number1 * number2
-        }
-    },
-    /**
-     * Création d'une question sur les double
-     */
-    double: function(){
-        let number = getRandomInt(1,50);
-        return {
-            text: `2 x ${number} = ?`,
-            expected: 2 * number
-        }
-    }
-};
-
+/**
+ * Play the game in a given mode.
+ */
 class Game extends React.Component {
     constructor(props) {
         super(props);
@@ -77,9 +47,12 @@ class Game extends React.Component {
 
     render() {
         const mode = this.props.mode;
-        const title = mode.charAt(0).toUpperCase() + mode.slice(1);
+        const title = getModeTitle(mode);
 
-        const complete = this.getAnswersCount() == 2;
+        /*
+         * Gestion de la fin de la partie
+         */
+        const complete = this.getAnswersCount() == NUMBER_OF_QUESTIONS;
         if ( complete ){
             const endDate = new Date();
             return (
@@ -90,7 +63,7 @@ class Game extends React.Component {
                 <div className="game container container-fluid">
                     <h1>{title}</h1>
                     <div className="question">{this.state.question.text}</div>
-                    <Keyboard onSubmit={this.handleSubmit.bind(this)} />
+                    <Numpad onSubmit={this.handleSubmit.bind(this)} />
                     <div className="row">
                         <div className="col-6 score">Score : {this.getCorrectAnswersCount()} / {this.getAnswersCount()}</div>
                         <div className="col-6 chrono">

@@ -1,9 +1,10 @@
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'math-kombat.js',
+        filename: 'main.js',
         path: path.resolve(__dirname, 'public/js'),
     },
     module: {
@@ -12,5 +13,10 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel-loader'
         }]
+    },
+    optimization: {
+        minimizer: [new TerserPlugin({
+            extractComments: false,
+        })],
     }
 };
