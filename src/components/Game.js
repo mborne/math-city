@@ -60,7 +60,7 @@ class Game extends React.Component {
             )
         }else{
             return (
-                <div className="game container container-fluid">
+                <div className="game">
                     <h1>{title}</h1>
                     <div className="question">{this.state.question.text}</div>
                     <Numpad onSubmit={this.handleSubmit.bind(this)} />

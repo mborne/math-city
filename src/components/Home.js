@@ -23,7 +23,7 @@ class Home extends React.Component {
             modeItems.push(modeItem);
         });
         return (
-            <div>
+            <div class="home">
                 <h1>MathCity</h1>
                 <ul className="list-group">
                     {modeItems}
