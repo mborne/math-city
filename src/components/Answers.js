@@ -7,20 +7,26 @@ class Answers extends React.Component {
     constructor(props) {
         super(props);
     }
+    getDefaultProps(){
+        return {
+            limit: 1000,
+            reverse: false
+        };
+    }
 
     render() {
         let answers = this.props.answers;
-        // TODO options
-        answers = answers.reverse().slice(0,2);
+        if ( this.props.reverse ){
+            answers = answers.reverse();
+        }
+        if ( this.props.limit != null ){
+            answers = answers.slice(0,this.props.limit);
+        }
 
         const items = [];
-
         for (const [index, answer] of answers.entries()) {
-            if (answer.correct) {
-                items.push(<div className="answer answer-valid" key={index}>{answer.message}</div>);
-            } else {
-                items.push(<div className="answer answer-invalid" key={index}>{answer.message}</div>);
-            }
+            const classNames = answer.correct ? "answer answer-valid" : "answer answer-invalid";
+            items.push(<div key={index} className={classNames}>{answer.message}</div>);
         }
 
         return (

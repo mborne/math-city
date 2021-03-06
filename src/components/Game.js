@@ -70,7 +70,7 @@ class Game extends React.Component {
                             <Chrono />
                         </div>
                     </div>
-                    <Answers answers={this.state.answers} />
+                    <Answers reverse="true" limit="2" answers={this.state.answers} />
                 </div>
             )
         }

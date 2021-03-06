@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 
 import getModeTitle from '../helpers/getModeTitle';
+import Answers from './Answers';
 
 /**
  * Display results.
@@ -35,6 +36,8 @@ class Result extends React.Component {
                 <div className="text-center font-weight-bold">
                     Score : {countCorrectAnswers} / {answers.length} en {seconds} secondes!
                 </div>
+
+                <Answers answers={this.props.answers} />
 
                 <div className="text-center">
                     <Link to="/"><span className="btn btn-primary">Nouvelle partie</span></Link>
