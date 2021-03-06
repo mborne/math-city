@@ -4,8 +4,10 @@ import {
     Link
 } from 'react-router-dom';
 
+import getModeTitle from '../helpers/getModeTitle';
+
 /**
- * Affichage des résultats.
+ * Display results.
  */
 class Result extends React.Component {
     constructor(props) {
@@ -13,8 +15,7 @@ class Result extends React.Component {
     }
 
     render() {
-        const mode = this.props.mode;
-        const title = mode.charAt(0).toUpperCase() + mode.slice(1);
+        const title = getModeTitle(this.props.mode);
 
         const answers = this.props.answers;
         let countCorrectAnswers = 0;

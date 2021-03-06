@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * Virtual keyboard button
+ * Virtual keyboard button.
  */
 class Button extends React.Component {
     constructor(props) {

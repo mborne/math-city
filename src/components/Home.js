@@ -9,7 +9,7 @@ import modes from '../modes';
 import getModeTitle from '../helpers/getModeTitle';
 
 /**
- * Page d'accueil de l'application.
+ * Home page providing main menu.
  */
 class Home extends React.Component {
     render() {

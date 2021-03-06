@@ -10,10 +10,10 @@ import {
 import Home from './Home';
 import Game from './Game';
 
-
+/**
+ * Route to the game in a given mode.
+ */
 function GameRoute() {
-  // We can use the `useParams` hook here to access
-  // the dynamic pieces of the URL.
   let { mode } = useParams();
 
   return (
@@ -22,7 +22,7 @@ function GameRoute() {
 }
 
 /**
- * Page d'accueil de l'application.
+ * Application router.
  */
 class Main extends React.Component {
 

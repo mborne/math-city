@@ -3,7 +3,7 @@ import React from 'react';
 import Button from './Button';
 
 /**
- * Clavier virtuel pour la saisie des réponses.
+ * Virtual numpad for mobile phones.
  */
 class Numpad extends React.Component {
     constructor(props) {
@@ -23,7 +23,7 @@ class Numpad extends React.Component {
     }
 
     /**
-     * Gestion du clavier classique.
+     * Handle real keyboard events.
      *
      * @param {objet} e
      * @param {string} e.key
@@ -44,7 +44,7 @@ class Numpad extends React.Component {
 
 
     /**
-     * Ajout d'un caractère.
+     * Add char to value.
      *
      * @param {string} key
      */
@@ -55,7 +55,7 @@ class Numpad extends React.Component {
     }
 
     /**
-     * Suppression du dernier caractère.
+     * Remove last char in value.
      */
     removeOne(){
         this.setState({
@@ -64,7 +64,7 @@ class Numpad extends React.Component {
     }
 
     /**
-     * Réinitialisation de la réponse.
+     * Clear value.
      */
     clear(){
         this.setState({
@@ -86,9 +86,6 @@ class Numpad extends React.Component {
         })
     }
 
-    /**
-     * Rendu du clavier et de la réponse.
-     */
     render() {
         return (
             <div className="keyboard">

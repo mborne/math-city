@@ -1,6 +1,6 @@
 {
-  "name": "math-kombat",
-  "version": "1.0.0",
+  "name": "@mborne/math-city",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gogs.quadtreeworld.net/experiments/math-kombat.git"
+    "url": "https://gogs.quadtreeworld.net/experiments/math-city.git"
   },
   "author": "",
   "license": "UNLICENSED",
