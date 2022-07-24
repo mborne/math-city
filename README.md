@@ -10,4 +10,5 @@ Play smart games to earn money to build your city!
 | Substraction   | `a - b = ?` |
 | Multiplication | `a * b = ?` |
 | Double         | `2 * a = ?` |
+| Moitié         | `a / 2 = ?` |
 
