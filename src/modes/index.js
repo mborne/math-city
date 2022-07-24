@@ -52,6 +52,16 @@ const modes = {
             text: `2 x ${number} = ?`,
             expected: 2 * number
         }
+    },
+    /**
+     * Création d'une question sur les double
+     */
+    moitie: function () {
+        let number = getRandomInt(1, 50);
+        return {
+            text: `${number*2} / 2 = ?`,
+            expected: number
+        }
     }
 };
 
