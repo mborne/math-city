@@ -4,7 +4,7 @@ const port = 3000;
 
 app.use('/math-city',express.static('docs'));
 
-app.get('*', function (req, res) {
+app.get('/', function (req, res) {
     res.redirect('/math-city/');
 });
 
