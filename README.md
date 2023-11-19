@@ -16,3 +16,7 @@ For the moment, it looks like a scam which served to motivate a child to learn h
 | Double         | `2 * a = ?` |
 | Moitié         | `a / 2 = ?` |
 
+## License
+
+[MIT](LICENSE)
+
