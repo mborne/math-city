@@ -28,7 +28,7 @@ class Main extends React.Component {
 
   render() {
     return (
-      <Router>
+      <Router basename="/math-city/">
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/play/:mode" element={<GameRoute />}/>
