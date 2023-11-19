@@ -1,6 +1,6 @@
 # math-city
 
-Play smart games to earn money to build your city and protect it from zombies!
+[mborne.github.io/math-city/](https://mborne.github.io/math-city/) - Play smart games to earn money to build your city and protect it from zombies!
 
 ## Motivation
 
