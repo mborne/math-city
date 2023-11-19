@@ -1,7 +1,7 @@
 {
   "name": "@mborne/math-city",
   "version": "0.1.0",
-  "description": "",
+  "description": "Play smart games to earn money to build your city and protect it from zombies!",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode=production",
@@ -10,10 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gogs.quadtreeworld.net/experiments/math-city.git"
+    "url": "https://github.com/mborne/math-city.git"
   },
-  "author": "",
-  "license": "UNLICENSED",
+  "author": "MBorne <mborne@users.noreply.github.com>",
+  "license": "MIT",
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.23.3",

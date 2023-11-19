@@ -1,8 +1,8 @@
 import React from 'react';
 
 import {
-  HashRouter as Router,
-  Switch,
+  BrowserRouter as Router,
+  Routes,
   Route,
   useParams
 } from 'react-router-dom';
@@ -29,10 +29,10 @@ class Main extends React.Component {
   render() {
     return (
       <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/play/:mode" children={<GameRoute />}/>
-        </Switch>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/play/:mode" element={<GameRoute />}/>
+        </Routes>
       </Router>
     );
   }
